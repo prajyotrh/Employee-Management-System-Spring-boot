@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/emp")
 public class EmployeeController {
 
@@ -48,5 +49,11 @@ public class EmployeeController {
     @DeleteMapping("/deleteEmployeeById/{id}")
     public boolean deleteEmployeeByID(@PathVariable int id) {
         return employeeService.deleteEmployeeByID(id);
+    }
+
+    // Get all employee
+    @GetMapping("/getAll")
+    public List<Employee> getAllEmployee() {
+        return employeeService.getAllEmployees();
     }
 }
